@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup">
+  <div class="form-group">
+    <label for="categoriesName" class="text-left">Categories name:</label>
+    <input type="text" class="form-control" [formControlName]="'categoryName'" id="categoriesName">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea type="text" class="form-control" id="description" [formControlName]="'description'"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mr-1" (click)="save()" *ngIf="!this.isEditable">Save</button>
+  <button type="submit" class="btn btn-primary mr-1" (click)="save()" *ngIf="this.isEditable">Update</button>
+  <button type="button" class="btn btn-info" [routerLink]="['/home/diaries']">Back</button>
+</form>
+
+<div class="mt-4 text-center">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category name</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let category of categoryModelList; let i= index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{category.categoryName}}</td>
+      <td class="ml-3">
+        <button class="btn btn-primary m-1" (click)="editCategoryById(category.id)"><i class="fa fa-pencil-square"></i></button>
+        <button class="btn btn-danger m-1" (click)="deleteCategoryById(category.id)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,26 @@
+<div class="mt-4 text-center">
+  <input type="text"  class="form-control" placeholder="Search from here" (input)="search($event)">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Category</th>
+      <th scope="col">Title</th>
+      <th scope="col">Note</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let diaryModel of diaryModelModelList">
+      <th scope="row">{{diaryModel.dateTime}}</th>
+      <td>{{diaryModel.category.categoryName}}</td>
+      <td>{{diaryModel.title}}</td>
+      <td>{{diaryModel.dailyNote}}</td>
+      <td class="ml-3">
+        <button class="btn btn-primary m-1" (click)="edit(diaryModel.id)"><i class="fa fa-pencil-square"></i></button>
+        <button class="btn btn-danger m-1" (click)="delete(diaryModel.id)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
